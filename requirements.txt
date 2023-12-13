@@ -1,1 +1,2 @@
 python-dotenv=1.0.0
+pandasql=0.7.3

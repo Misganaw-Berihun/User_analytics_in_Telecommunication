@@ -12,9 +12,34 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def write_data(
-            df: pd.DataFrame,
-            table_name : str
-            ) -> None:
+        df: pd.DataFrame,
+        table_name : str
+        ) -> None:
+        """Write DataFrame to a PostgreSQL database table.
+
+        Parameters
+        ----------
+        df : pandas.DataFrame
+            The DataFrame containing the data to be written.
+        table_name : str
+            The name of the table where the data will be written.
+
+        Returns
+        -------
+        None
+
+        Raises
+        ------
+        Exception
+            If there is an error during the data writing process.
+
+        Notes
+        -----
+        This function uses the `PostgresConnection` class to establish a connection
+        to the PostgreSQL database. Ensure that the necessary environment variables
+        (DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME) are set before calling
+        this function.
+        """
         try:
             conn = PostgresConnection()
 
