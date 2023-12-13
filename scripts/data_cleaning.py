@@ -127,7 +127,7 @@ def replace_column_with_mode(
 def handle_outliers(
     df: pd.DataFrame, 
     columns: list[str], 
-    method:str='remove'
+    method:str='clip'
     ) -> pd.DataFrame:
     """Handle outliers in specified columns using a specified method.
 
