@@ -1,6 +1,8 @@
+import os
 from abc import ABC, abstractmethod
 from sqlalchemy.engine.base import Engine
 from typing import Generic, Optional, TypeVar
+from dotenv import load_dotenv
 
 RawConnectionT = TypeVar("RawConnectionT")
 
@@ -24,7 +26,13 @@ class ConnectionBase(ABC, Generic[RawConnectionT]):
         None
 
         """
-        self._kwargs = kwargs
+        self._kwargs = kwargs if kwargs else {
+            'user': os.getenv('DB_USER'),
+            'password': os.getenv('DB_PASSWORD'),
+            'host': os.getenv('DB_HOST'),
+            'port': os.getenv('DB_PORT'),
+            'database': os.getenv('DB_NAME'),
+        }
         self._raw_instance: Optional[Engine] = self._connect()
 
     @property
