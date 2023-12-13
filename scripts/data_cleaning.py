@@ -85,21 +85,6 @@ def remove_rows_with_missing_values(
 
 import pandas as pd
 
-def replace_column_with_mode(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
-    """Replace missing values in a column with its mode.
-
-    Parameters
-    ----------
-    - df: DataFrame
-    - column_name: str
-        Name of the column to replace missing values.
-
-    Returns
-    -------
-    - DataFrame object
-        with missing values in the specified column replaced by its mode.
-    """
-
 def replace_column_with_mode(
     df: pd.DataFrame, 
     column_names: list[str]
@@ -127,7 +112,7 @@ def replace_column_with_mode(
 def handle_outliers(
     df: pd.DataFrame, 
     columns: list[str], 
-    method:str='clip'
+    method:str='mean'
     ) -> pd.DataFrame:
     """Handle outliers in specified columns using a specified method.
 
@@ -137,7 +122,7 @@ def handle_outliers(
     - columns: list
         List of columns to handle outliers.
     - method: str, default 'clip'
-        Outlier handling method, options: 'clip', 'remove'
+        Outlier handling method, options: 'clip', 'remove', 'mean'
 
     Returns
     -------
@@ -153,4 +138,12 @@ def handle_outliers(
             q3 = df[col].quantile(0.75)
             iqr = q3 - q1
             df = df[(df[col] >= q1 - 1.5 * iqr) & (df[col] <= q3 + 1.5 * iqr)]
+    elif method == 'mean':
+        for col in columns:
+            mean_val = df[col].mean()
+            df[col] = np.where(
+                (df[col] < df[col].quantile(0.05)) | (df[col] > df[col].quantile(0.95)),
+                mean_val,
+                df[col]
+            )
     return df
