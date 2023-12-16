@@ -3,14 +3,14 @@ name: run-tests
 permissions:
   id-token: write # required to use OIDC authentication
   contents: read # required to checkout the code from the repo
-  
+
 on:
   pull_request:
     branches:
-    - unit-test
+      - unit-test
   push:
     branches:
-    - unit-test
+      - unit-test
 
 jobs:
   Run-unit-test:
@@ -22,8 +22,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::070096167435:role/github_actions_role
-          aws-region: us-east-1   
-      #    
+          aws-region: us-east-1
+      #
       - name: Install python
         run: sudo apt update && DEBIAN_FRONTEND=noninteractive sudo apt install -y python3
       - name: Install pip
@@ -72,4 +72,4 @@ jobs:
 
       - name: Run test for get_cahnnels
         run: |
-          python -m unittest discover -v -s test_get_channels.py
+          python -m unittest discover -v -s scripts/data_cleaning_test.py.py
