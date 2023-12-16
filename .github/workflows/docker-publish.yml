@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t msganawberihun10@gmail.com/user_analytics_telecom:latest .
+        run: docker build -t misge10/user_analytics_telecom:latest .
 
       - name: Push Docker Image
-        run: docker push msganawberihun10@gmail.com/user_analytics_telecom:latest
+        run: docker push misge10/user_analytics_telecom:latest
