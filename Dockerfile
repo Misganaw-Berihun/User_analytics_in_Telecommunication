@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/Misganaw-Berihun/User_analytics_in_Telecommunication.git .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Expose the port your app runs on
 EXPOSE 5000
