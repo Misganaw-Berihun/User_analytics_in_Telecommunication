@@ -1,14 +1,12 @@
-# Use an official Python runtime as a parent image
 FROM python:3.8-slim
+
+# Set the working directory to /app
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y git
-RUN git clone https://github.com/Misganaw-Berihun/User_analytics_in_Telecommunication.git .
+COPY . /app
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-# Expose the port your app runs on
-EXPOSE 5000
+EXPOSE 80
 
-# Define environment variable
 ENV NAME World
