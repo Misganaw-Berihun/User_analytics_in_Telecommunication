@@ -26,3 +26,15 @@ This project focuses on analyzing user engagement, experience, and satisfaction 
 - Streamlit for building the dashboard.
 - Scikit-learn for machine learning tasks.
 - SQLAlchemy for database interaction
+
+## Dashboard
+![dashboard](./dashboard/screenshots/11.png)
+![dashboard](./dashboard/screenshots/22.png)
+![dashboard](./dashboard/screenshots/33.png)
+![dashboard](./dashboard/screenshots/44.png)
+![dashboard](./dashboard/screenshots/55.png)
+
+
+
+
+
