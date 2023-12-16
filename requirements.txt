@@ -1,10 +1,6 @@
 matplotlib
 pandas
 pandasql
-pick
-pillow
-psycopg2
-psycopg2-binary
 python
 python-dotenv
 scikit-learn
