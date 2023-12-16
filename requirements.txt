@@ -1,7 +1,7 @@
 matplotlib
 pandas
 pandasql
-python
+python3
 python-dotenv
 scikit-learn
 seaborn
